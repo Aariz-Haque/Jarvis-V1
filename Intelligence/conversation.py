@@ -3,8 +3,12 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 import warnings
+from rich.console import Console
+from rich.markdown import Markdown
+from rich.progress import track
 warnings.simplefilter("ignore")
 Link="https://gpt4login.com/use-chatgpt-online-free/"
+console=Console()
 # chrome_driver_path = 'Brain\\chromedriver.exe'
 chrome_options = Options()
 chrome_options.headless = True
@@ -50,36 +54,11 @@ def getResponse(query):
     fileWriter(data=str(NewData))
     return answer
 
-print("Starting The GPT4-Model.")
-fileWriter(data='3')
-# initPrompt="From now on respond to me like you are Cherus. Cherus is an alien from the planet Y-32b and he is very smart and knows a lot about current affairs, space, science, technology etc. Respond in short texts like an Instagram message"
-# ChatGPTBrain(Query=initPrompt)
-# while True:
-#     query=input("Enter query:")
-#     res=ChatGPTBrain(Query=query)
-#     print(res)
-# while True:
-        
-#     try:
-#         file=open("..\\Body\\SpeechRecognition.txt","r")
-#         query=file.read()
-#         file.close()
-#         fileHistory=open("history.txt","r")
-#         dataHistory=fileHistory.read()
-#         fileHistory.close()
 
-#         if str(query)==str(dataHistory):
-#             sleep(0.5)
-            
-#         else:
-#             if query=="__exit__":
-#                 exit()
-#             else:
-#                 result=ChatGPTBrain(Query=query)
-#                 speak(result)
-#                 print(result)
-#                 fileHistory=open("history.txt","w")
-#                 fileHistory.write(query)
-#                 fileHistory.close()
-#     except Exception as e:
-#         print(e)
+# console.print("[bold][green]Loading...[/][/]")
+for _ in track(range(100),description="[bold][green]Loading...[/][/]"):
+    sleep(0.001)
+text="""# Welcome to J.A.R.V.I.S """
+md=Markdown(text)
+console.print(md)
+fileWriter(data='3')
