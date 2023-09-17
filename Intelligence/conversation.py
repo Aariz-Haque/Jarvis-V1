@@ -3,12 +3,10 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 import warnings
-from rich.console import Console
-from rich.markdown import Markdown
-from rich.progress import track
+
 warnings.simplefilter("ignore")
 Link="https://gpt4login.com/use-chatgpt-online-free/"
-console=Console()
+
 # chrome_driver_path = 'Brain\\chromedriver.exe'
 chrome_options = Options()
 chrome_options.headless = True
@@ -56,9 +54,5 @@ def getResponse(query):
 
 
 # console.print("[bold][green]Loading...[/][/]")
-for _ in track(range(100),description="[bold][green]Loading...[/][/]"):
-    sleep(0.001)
-text="""# Welcome to J.A.R.V.I.S """
-md=Markdown(text)
-console.print(md)
+
 fileWriter(data='3')
