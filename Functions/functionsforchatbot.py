@@ -1,10 +1,16 @@
 import webbrowser
 from youtubesearchpython import VideosSearch
+import os
+import requests
+from dotenv import load_dotenv
 
+load_dotenv()
 def func_openSite(url):
     webbrowser.open(url)
+
 def func_sendMail(*args):
     print("TODO")
+
 def func_playSong(song_name):
     try:
         videos_search = VideosSearch(song_name, limit = 1)
@@ -20,3 +26,9 @@ def func_playSong(song_name):
 
     except Exception as e:
         print(f"An error occurred: {str(e)}")
+
+def func_sendDiscordMessage(message):
+    url=os.getenv('DISCORD_URL')
+    data = {'content': message}
+    res=requests.post(url,data=data)
+    
